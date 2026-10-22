@@ -294,6 +294,13 @@
 .entry-demo-notice { margin-top: 24px; padding-top: 19px; border-top: 1px solid var(--entry-line); }
 .entry-demo-notice b { font-size: 11px; }
 .entry-demo-notice p { margin-block: 5px 12px; color: var(--entry-muted); font-size: 10px; line-height: 1.8; }
+.entry-demo-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.entry-demo-roles .entry-secondary { min-height: 70px; padding: 10px 12px; align-items: flex-start; flex-direction: column; gap: 3px; text-align: start; }
+.entry-demo-roles span, .entry-demo-roles small { display: block; }
+.entry-demo-roles span { color: var(--entry-text); font-size: 11px; font-weight: 700; }
+.entry-demo-roles small { color: var(--entry-muted); font-size: 8px; line-height: 1.6; font-weight: 400; }
+.entry-demo-roles .entry-secondary:hover span { color: var(--entry-accent); }
+@media (max-width: 560px) { .entry-demo-roles { grid-template-columns: 1fr; } }
 
 .entry-footer {
   min-height: 66px;
@@ -333,8 +340,9 @@
   .entry-how ol { grid-template-columns: 1fr; gap: 14px; }
   .entry-how li { min-height: 148px; }
   .entry-login-layout { padding-block: 34px; grid-template-columns: 1fr; gap: 30px; }
-  .entry-login-card { grid-row: 2; padding: 25px; }
-  .entry-login-intro { grid-row: 1; }
+  /* Keep the primary login task first on mobile; supporting context follows. */
+  .entry-login-card { grid-row: 1; padding: 25px; }
+  .entry-login-intro { grid-row: 2; }
   .entry-login-intro h1 { font-size: 36px; }
   .entry-login-intro h1 br { display: none; }
   .entry-login-intro > p { margin-top: 11px; font-size: 14px; }

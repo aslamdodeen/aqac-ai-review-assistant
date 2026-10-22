@@ -286,7 +286,9 @@ function statusIcon(value: string) {
 function AssessmentStepper({ stage }: { stage: number }) {
   const steps = [
     ["تعريف التقييم", "الجامعة والبرنامج الأكاديمي"],
-    ["تجهيز المدخلات", "رفع الدراسة الذاتية والأدلة أو استخدام الإدخال الموجّه"],
+    ["تجهيز الأدلة", "رفع الدراسة الذاتية وربط الأدلة بالمتطلبات"],
+    ["فحص الجاهزية", "معالجة النواقص قبل تشغيل التحليل"],
+    ["التحليل والمراجعة", "مراجعة النتائج بشريًا قبل التقرير الداخلي"],
   ]
   return (
     <ol className="assessment-stepper" aria-label="مراحل إعداد التقييم">
@@ -883,6 +885,10 @@ export default function App({
     if (name === "Page heading") return null
     if (name.startsWith("Button | ")) {
       const label = name.split(" | ")[1]
+      const displayLabel =
+        current === "WF20" && label === "تصدير PDF"
+          ? "تصدير مسودة PDF"
+          : label
       return (
         <Button
           key={key}
@@ -893,17 +899,17 @@ export default function App({
           }
           onClick={() => act(label)}
           secondary={/مسودة|العودة|إلغاء|فتح الإعدادات|إضافة إجراء|مراجعة النتائج/.test(
-            label,
+            displayLabel,
           )}
           icon={
-            label.includes("تصدير")
+            displayLabel.includes("تصدير")
               ? "download"
               : /تقييم جديد|إضافة/.test(label)
                 ? "plus"
                 : "arrow"
           }
         >
-          {label}
+          {displayLabel}
         </Button>
       )
     }
@@ -1431,8 +1437,8 @@ export default function App({
                 {text(c).trim()}
               </label>
             ))}
-          <Button icon="download" onClick={() => exportData("تصدير PDF")}>
-            تصدير PDF
+          <Button icon="download" secondary onClick={() => exportData("تصدير مسودة PDF")}>
+            تصدير مسودة PDF
           </Button>
         </section>
       )
@@ -1654,6 +1660,8 @@ export default function App({
           {["WF06", "WF07"].includes(current) && (
             <AssessmentStepper stage={1} />
           )}
+          {current === "WF08" && <AssessmentStepper stage={2} />}
+          {["WF13", "WF14"].includes(current) && <AssessmentStepper stage={3} />}
           {assessment &&
             [
               "WF06",

@@ -449,13 +449,13 @@
                   "font": "Cairo:Regular",
                   "size": 12,
                   "children": [
-                    "2 تقييم"
+                    "1 تقييم"
                   ]
                 }
               ]
             },
             {
-              "name": "Card | قيد المعالجة",
+              "name": "Card | مكتمل",
               "tag": "div",
               "id": "1:119",
               "font": null,
@@ -468,7 +468,7 @@
                   "font": "Cairo:Bold",
                   "size": 14,
                   "children": [
-                    "قيد المعالجة"
+                    "مكتمل"
                   ]
                 },
                 {
@@ -507,7 +507,7 @@
                   "font": "Cairo:Regular",
                   "size": 12,
                   "children": [
-                    "3 تقييمات"
+                    "1 تقييم"
                   ]
                 }
               ]
@@ -10585,7 +10585,7 @@
                   ]
                 },
                 {
-                  "name": "Button | تصدير PDF",
+                  "name": "Button | تصدير مسودة PDF",
                   "tag": "div",
                   "id": "1:1697",
                   "font": null,
@@ -10598,7 +10598,7 @@
                       "font": "Cairo:Bold",
                       "size": 13,
                       "children": [
-                        "تصدير PDF"
+                        "تصدير مسودة PDF"
                       ]
                     }
                   ]
